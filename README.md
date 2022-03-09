@@ -9,6 +9,10 @@ Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 
 Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
 
+## Deployed
+
+Deployed to [Gigalixir](https://gigalixir.com) &rarr; https://red-dark-honeyeater.gigalixirapp.com
+
 ## Log
 
 * Latest Elixir & Erlang installed
@@ -26,6 +30,9 @@ Ready to run in production? Please [check our deployment guides](https://hexdocs
   * `echo "elixir_version=1.13.3" > elixir_buildpack.config`
   * `echo "erlang_version=23.3.2" >> elixir_buildpack.config`
   * `echo "node_version=14.15.4" > phoenix_static_buildpack.config`
+* deploy to gigalixir: `git push gigalixir master`
+* visit https://red-dark-honeyeater.gigalixirapp.com
+  * wait for the load balancer start or restart the app in https://console.gigalixir.com
 
 ## Learn more
 
