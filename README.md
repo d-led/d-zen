@@ -19,6 +19,13 @@ Ready to run in production? Please [check our deployment guides](https://hexdocs
 * created the app `mix phx.new --no-ecto d-zen --app dzen`
 * fetched the dependencies `mix deps.get`
 * local live-reloadable start: `mix phx.server`
+* registered & then logged into gigalixir: `gigalixir login`
+* created the app: `APP_NAME=$(gigalixir create)`
+  * if not automatically set, `gigalixir git:remote $APP_NAME`
+* configured the versions
+  * `echo "elixir_version=1.13.3" > elixir_buildpack.config`
+  * `echo "erlang_version=23.3.2" >> elixir_buildpack.config`
+  * `echo "node_version=14.15.4" > phoenix_static_buildpack.config`
 
 ## Learn more
 
