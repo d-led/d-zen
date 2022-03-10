@@ -36,8 +36,8 @@ Deployed to [Gigalixir](https://gigalixir.com) &rarr; https://red-dark-honeyeate
 
 ### Changes
 
-- cleanup: c1c3ba41d99179a169868d4161a8067cd0d1656a
-- begin with a live view: 0292d822379f6079fd2f07ed91e26a43cb55c5fc
+- cleanup: [c1c3ba41d99179a169868d4161a8067cd0d1656a](https://github.com/d-led/d-zen/commit/c1c3ba41d99179a169868d4161a8067cd0d1656a)
+- begin with a live view: [0292d822379f6079fd2f07ed91e26a43cb55c5fc](https://github.com/d-led/d-zen/commit/0292d822379f6079fd2f07ed91e26a43cb55c5fc)
 
 ## Learn more
 
