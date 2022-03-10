@@ -14,7 +14,8 @@ config :dzen, DzenWeb.Endpoint,
   server: true,
   # Needed for Phoenix 1.2 and 1.4. Doesn't hurt for 1.3.
   http: [port: {:system, "PORT"}],
-  url: [scheme: "https", host: "red-dark-honeyeater.gigalixirapp.com", port: 443]
+  url: [scheme: "https", host: "red-dark-honeyeater.gigalixirapp.com", port: 443],
+  check_origin: ["https://red-dark-honeyeater.gigalixirapp.com"]
 
 
 # Do not print debug messages in production
