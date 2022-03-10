@@ -17,7 +17,6 @@ config :dzen, DzenWeb.Endpoint,
   url: [scheme: "https", host: "red-dark-honeyeater.gigalixirapp.com", port: 443],
   check_origin: ["https://red-dark-honeyeater.gigalixirapp.com"]
 
-
 # Do not print debug messages in production
 config :logger, level: :info
 

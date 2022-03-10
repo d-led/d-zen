@@ -13,7 +13,8 @@ defmodule Dzen.Application do
       # Start the PubSub system
       {Phoenix.PubSub, name: Dzen.PubSub},
       # Start the Endpoint (http/https)
-      DzenWeb.Endpoint
+      DzenWeb.Endpoint,
+      DzenWeb.Counter
       # Start a worker by calling: Dzen.Worker.start_link(arg)
       # {Dzen.Worker, arg}
     ]
