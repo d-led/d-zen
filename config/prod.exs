@@ -10,7 +10,7 @@ import Config
 # which you should run after static files are built and
 # before starting your production server.
 config :dzen, DzenWeb.Endpoint,
-  cache_static_manifest: "priv/static/cache_manifest.json"
+  cache_static_manifest: "priv/static/cache_manifest.json",
   server: true,
   # Needed for Phoenix 1.2 and 1.4. Doesn't hurt for 1.3.
   http: [port: {:system, "PORT"}],
