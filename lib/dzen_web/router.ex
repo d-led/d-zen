@@ -17,7 +17,7 @@ defmodule DzenWeb.Router do
   scope "/", DzenWeb do
     pipe_through :browser
 
-    get "/", PageController, :index
+    live "/", PageControllerLive
   end
 
   # Other scopes may use custom stacks.
