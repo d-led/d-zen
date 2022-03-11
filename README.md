@@ -40,6 +40,7 @@ Deployed to [Gigalixir](https://gigalixir.com) &rarr; https://red-dark-honeyeate
 - begin with a live view: [0292d822379f6079fd2f07ed91e26a43cb55c5fc](https://github.com/d-led/d-zen/commit/0292d822379f6079fd2f07ed91e26a43cb55c5fc)
 - making websocket connections work on gigalixir: [66678ad5fc4f53e2e90bce790ecb1933f256b40d](https://github.com/d-led/d-zen/commit/66678ad5fc4f53e2e90bce790ecb1933f256b40d)
 - [PubSub](https://hexdocs.pm/phoenix_pubsub/Phoenix.PubSub.html) & [LiveView](https://hexdocs.pm/phoenix_live_view/Phoenix.LiveView.html) [b685c71233b9e200e9eb8a2dcb79b73e70c6b53e](https://github.com/d-led/d-zen/commit/b685c71233b9e200e9eb8a2dcb79b73e70c6b53e) + channel name fix [314b8191fb5e993038c3506bbbb89c87f9df1aa0](https://github.com/d-led/d-zen/commit/314b8191fb5e993038c3506bbbb89c87f9df1aa0)
+- refactoring to not repeat the channel name mismatch mistake [ecd14f02bf71bb33c330b6abfe680580560e126f](https://github.com/d-led/d-zen/commit/ecd14f02bf71bb33c330b6abfe680580560e126f)
 
 ## Learn more
 
