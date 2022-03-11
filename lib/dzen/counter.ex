@@ -94,7 +94,7 @@ defmodule DzenWeb.Counter do
        }) do
     Phoenix.PubSub.broadcast(
       Dzen.PubSub,
-      "live:counter:#{node()}",
+      Dzen.Names.live_counter(),
       {
         :counter_state,
         %{

@@ -26,7 +26,7 @@ defmodule DzenWeb.PageControllerLive do
   def mount(_params, _user, socket) do
     if connected?(socket) do
       # subscribe to the other modules sending live notifications
-      DzenWeb.Endpoint.subscribe("live:counter:#{node()}")
+      DzenWeb.Endpoint.subscribe(Dzen.Names.live_counter())
 
       # let the system know that a session has started
       DzenWeb.Counter.session_started()
