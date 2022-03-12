@@ -17,7 +17,7 @@ defmodule DzenWeb.PageControllerLive do
 
     <section class="row">
       <article class="column">
-        <a href="https://github.com/d-led/d-zen">_</a>
+        <a href="https://github.com/d-led/d-zen">.</a>
       </article>
     </section>
     """
