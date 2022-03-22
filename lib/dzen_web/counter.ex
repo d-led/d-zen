@@ -76,7 +76,8 @@ defmodule DzenWeb.Counter do
      %{
        total_sessions: total_sessions,
        stopped_sessions: stopped_sessions
-     }} |> IO.inspect()
+     }}
+    |> IO.inspect()
   end
 
   def get_counter_value(key) do
@@ -88,22 +89,27 @@ defmodule DzenWeb.Counter do
 
   def handle_cast({:session_stopped}, state = %{stopped_sessions: stopped_sessions}) do
     state = %{state | stopped_sessions: stopped_sessions + 1}
-    # increase_persistent_counter(@stopped_sessions)
+    increase_persistent_counter(@stopped_sessions)
     broadcast_counter_state(state)
     {:noreply, state}
   end
 
   def handle_cast({:session_started}, state = %{total_sessions: total_sessions}) do
-    # increase_persistent_counter(@total_sessions)
+    increase_persistent_counter(@total_sessions)
     state = %{state | total_sessions: total_sessions + 1}
     broadcast_counter_state(state)
     {:noreply, state}
   end
 
   defp increase_persistent_counter(key) do
-    Dzen.Counter
-    |> Repo.get_by(key: key)
-    |> Repo.update_all(inc: [value: 1])
+    Repo.insert(
+      %Dzen.Counter{
+        key: key,
+        value: 1
+      },
+      conflict_target: :key,
+      on_conflict: [inc: [value: 1]]
+    )
   end
 
   def handle_call({:total_sessions}, _sender, state = %{total_sessions: total_sessions}) do
