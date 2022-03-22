@@ -2,8 +2,8 @@ defmodule Dzen.Counter do
   use Ecto.Schema
 
   schema "counters" do
-    field :key, :string
-    field :value, :integer, default: 0
+    field(:key, :string)
+    field(:value, :integer, default: 0)
   end
 
   def changeset(counter, params \\ %{}) do

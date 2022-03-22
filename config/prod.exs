@@ -20,7 +20,8 @@ config :dzen, DzenWeb.Endpoint,
 config :dzen, Dzen.Repo,
   adapter: Ecto.Adapters.Postgres,
   url: System.get_env("DATABASE_URL"),
-  database: "", # Works around a bug in older versions of ecto. Doesn't hurt for other versions.
+  # Works around a bug in older versions of ecto. Doesn't hurt for other versions.
+  database: "",
   ssl: true,
   pool_size: 2
 

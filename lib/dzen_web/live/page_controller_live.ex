@@ -31,7 +31,7 @@ defmodule DzenWeb.PageControllerLive do
       # let the system know that a session has started
       DzenWeb.Counter.session_started()
 
-      :timer.send_after(1000, self(), :init)
+      :timer.send_after(10, self(), :init)
     end
 
     socket =
