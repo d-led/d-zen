@@ -62,3 +62,36 @@ docker-compose up -d
 * Docs: https://hexdocs.pm/phoenix
 * Forum: https://elixirforum.com/c/phoenix-forum
 * Source: https://github.com/phoenixframework/phoenix
+
+## Gigalixir Hands-On
+
+### IEx in the Container
+
+[docs](https://gigalixir.readthedocs.io/en/latest/runtime.html#how-to-ssh-into-a-production-container)
+
+- `gigalixir account:ssh_keys:add "$(cat ~/.ssh/id_rsa.pub)"` and wait a couple of minutes
+- `gigalixir ps:remote_console``
+
+### Resetting the DB
+
+[docs](https://gigalixir.readthedocs.io/en/latest/database.html#how-to-reset-the-database)
+
+```elixir
+# check the data
+Dzen.Repo.all(Dzen.Counter)
+# drop
+Application.app_dir(:dzen, "priv/repo/migrations"), :down, [all: true])
+# create
+Ecto.Migrator.run(Dzen.Repo, Application.app_dir(:dzen, "priv/repo/migrations"), :up, [all: true])
+```
+
+### Changing an Entity
+
+```elixir
+# check the data
+Dzen.Repo.all(Dzen.Counter)
+# change the entity
+Dzen.Repo.get_by(Dzen.Counter, key: "stopped_sessions")
+|> Ecto.Changeset.change(%{value: 42})
+|> Dzen.Repo.update()
+```
