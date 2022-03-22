@@ -54,6 +54,7 @@ docker-compose up -d
 - making websocket connections work on gigalixir: [66678ad5fc4f53e2e90bce790ecb1933f256b40d](https://github.com/d-led/d-zen/commit/66678ad5fc4f53e2e90bce790ecb1933f256b40d)
 - [PubSub](https://hexdocs.pm/phoenix_pubsub/Phoenix.PubSub.html) & [LiveView](https://hexdocs.pm/phoenix_live_view/Phoenix.LiveView.html) [b685c71233b9e200e9eb8a2dcb79b73e70c6b53e](https://github.com/d-led/d-zen/commit/b685c71233b9e200e9eb8a2dcb79b73e70c6b53e) + channel name fix [314b8191fb5e993038c3506bbbb89c87f9df1aa0](https://github.com/d-led/d-zen/commit/314b8191fb5e993038c3506bbbb89c87f9df1aa0)
 - refactoring to not repeat the channel name mismatch mistake [ecd14f02bf71bb33c330b6abfe680580560e126f](https://github.com/d-led/d-zen/commit/ecd14f02bf71bb33c330b6abfe680580560e126f)
+- added ecto to persist the counters: [diff before-ecto...master](https://github.com/d-led/d-zen/compare/before-ecto...master)
 
 ## Learn more
 
