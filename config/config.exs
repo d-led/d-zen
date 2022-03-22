@@ -7,12 +7,20 @@
 # General application configuration
 import Config
 
+config :dzen, Dzen.Repo,
+  database: "dzen_repo",
+  username: "postgres",
+  password: "postgres",
+  hostname: "localhost"
+
 # Configures the endpoint
 config :dzen, DzenWeb.Endpoint,
   url: [host: "localhost"],
   render_errors: [view: DzenWeb.ErrorView, accepts: ~w(html json), layout: false],
   pubsub_server: Dzen.PubSub,
   live_view: [signing_salt: "VGQBGthG"]
+
+config :dzen, ecto_repos: [Dzen.Repo]
 
 # Configures the mailer
 #

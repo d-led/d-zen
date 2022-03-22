@@ -17,6 +17,13 @@ config :dzen, DzenWeb.Endpoint,
   url: [scheme: "https", host: "red-dark-honeyeater.gigalixirapp.com", port: 443],
   check_origin: ["https://red-dark-honeyeater.gigalixirapp.com"]
 
+config :dzen, Dzen.Repo,
+  adapter: Ecto.Adapters.Postgres,
+  url: "${DATABASE_URL}",
+  database: "", # Works around a bug in older versions of ecto. Doesn't hurt for other versions.
+  ssl: true,
+  pool_size: 2
+
 # Do not print debug messages in production
 config :logger, level: :info
 

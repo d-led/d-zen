@@ -13,6 +13,15 @@ Ready to run in production? Please [check our deployment guides](https://hexdocs
 
 Deployed to [Gigalixir](https://gigalixir.com) &rarr; https://red-dark-honeyeater.gigalixirapp.com
 
+## Running Locally
+
+### Postgres
+
+Posgtres is reuired to persist the counters. Run it conveniently via:
+
+```bash
+docker-compose up -d
+
 ## Log
 
 * Latest Elixir & Erlang installed
@@ -33,6 +42,10 @@ Deployed to [Gigalixir](https://gigalixir.com) &rarr; https://red-dark-honeyeate
 * deploy to gigalixir: `git push gigalixir master`
 * visit https://red-dark-honeyeater.gigalixirapp.com
   * wait for the load balancer start or restart the app in https://console.gigalixir.com
+* added an [Ecto Repo](https://hexdocs.pm/ecto/getting-started.html#adding-ecto-to-an-application)
+  * `mix ecto.create` after all the required code changes
+  * `mix ecto.gen.migration create_counters` to initialize the counters
+* created the free gigalixir DB tier: `gigalixir pg:create --free`
 
 ### Changes
 
