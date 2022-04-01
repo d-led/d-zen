@@ -71,7 +71,7 @@ docker-compose up -d
 [docs](https://gigalixir.readthedocs.io/en/latest/runtime.html#how-to-ssh-into-a-production-container)
 
 - `gigalixir account:ssh_keys:add "$(cat ~/.ssh/id_rsa.pub)"` and wait a couple of minutes
-- `gigalixir ps:remote_console``
+- `gigalixir ps:remote_console`
 
 ### Resetting the DB
 
