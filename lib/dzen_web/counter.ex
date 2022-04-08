@@ -65,19 +65,11 @@ defmodule DzenWeb.Counter do
   def init(_args) do
     IO.puts("Starting the global session counter")
 
-    total_sessions = get_counter_value(@total_sessions)
-    stopped_sessions = get_counter_value(@stopped_sessions)
-
     Repo.all(Dzen.Counter) |> IO.inspect()
 
     :global.register_name(__MODULE__, self())
 
-    {:ok,
-     %{
-       total_sessions: total_sessions,
-       stopped_sessions: stopped_sessions
-     }}
-    |> IO.inspect()
+    {:ok, %{}}
   end
 
   def get_counter_value(key) do
@@ -87,17 +79,15 @@ defmodule DzenWeb.Counter do
     end
   end
 
-  def handle_cast({:session_stopped}, state = %{stopped_sessions: stopped_sessions}) do
-    state = %{state | stopped_sessions: stopped_sessions + 1}
+  def handle_cast({:session_stopped}, state) do
     increase_persistent_counter(@stopped_sessions)
-    broadcast_counter_state(state)
+    broadcast_counter_state()
     {:noreply, state}
   end
 
-  def handle_cast({:session_started}, state = %{total_sessions: total_sessions}) do
+  def handle_cast({:session_started}, state) do
     increase_persistent_counter(@total_sessions)
-    state = %{state | total_sessions: total_sessions + 1}
-    broadcast_counter_state(state)
+    broadcast_counter_state()
     {:noreply, state}
   end
 
@@ -112,31 +102,31 @@ defmodule DzenWeb.Counter do
     )
   end
 
-  def handle_call({:total_sessions}, _sender, state = %{total_sessions: total_sessions}) do
-    {:reply, total_sessions, state}
+  def handle_call({:total_sessions}, _sender, state) do
+    {:reply, get_counter_value(@total_sessions), state}
   end
 
   def handle_call(
         {:active_sessions},
         _sender,
-        state = %{total_sessions: total_sessions, stopped_sessions: stopped_sessions}
+        state
       ) do
-    {:reply, total_sessions - stopped_sessions, state}
+    {:reply, get_counter_value(@total_sessions) - get_counter_value(@stopped_sessions), state}
   end
 
   ## details
-  defp broadcast_counter_state(%{
-         total_sessions: total_sessions,
-         stopped_sessions: stopped_sessions
-       }) do
+  defp broadcast_counter_state() do
+    total_count = get_counter_value(@total_sessions)
+    active_count = total_count - get_counter_value(@stopped_sessions)
+
     Phoenix.PubSub.broadcast(
       Dzen.PubSub,
       Dzen.Names.live_counter(),
       {
         :counter_state,
         %{
-          total_count: total_sessions,
-          active_count: total_sessions - stopped_sessions
+          total_count: total_count,
+          active_count: active_count
         }
       }
     )

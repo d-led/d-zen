@@ -24,6 +24,7 @@ defmodule DzenWeb.PageControllerLive do
   end
 
   def mount(_params, _user, socket) do
+    Process.flag(:trap_exit, true)
     if connected?(socket) do
       # subscribe to the other modules sending live notifications
       DzenWeb.Endpoint.subscribe(Dzen.Names.live_counter())
@@ -44,6 +45,12 @@ defmodule DzenWeb.PageControllerLive do
 
   def terminate(_reason, socket) do
     if connected?(socket), do: DzenWeb.Counter.session_stopped()
+  end
+
+  def handle_info({:EXIT, _from, reason}, state) do
+    IO.puts "trapped EXIT"
+    DzenWeb.Counter.session_stopped()
+    {:stop, reason, state}
   end
 
   # this is triggered upon the :init message triggered via :timer.send_after
