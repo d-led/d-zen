@@ -84,7 +84,7 @@ Ecto.Migrator.run(Dzen.Repo, Application.app_dir(:dzen, "priv/repo/migrations"),
 # check the data
 Dzen.Repo.all(Dzen.Counter)
 # change the entity
-Dzen.Repo.get_by(Dzen.Counter, key: "stopped_sessions")
+Dzen.Repo.get_by(Dzen.Counter, id: 2)
 |> Ecto.Changeset.change(%{value: 42})
 |> Dzen.Repo.update()
 ```
